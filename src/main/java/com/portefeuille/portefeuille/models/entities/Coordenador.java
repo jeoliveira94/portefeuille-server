@@ -18,7 +18,7 @@ public class Coordenador {
 
   @Id
   @Column(name = "matricula")
-  private String matricula;
+  private Long matricula;
 
   @Column(name = "nome")
   private String nome;
