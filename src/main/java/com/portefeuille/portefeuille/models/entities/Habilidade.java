@@ -1,5 +1,41 @@
 package com.portefeuille.portefeuille.models.entities;
 
-public class Habilidade {
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "habilidade")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Habilidade {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
+
+	@Column(name = "tipo")
+	private String tipo;
+
+	@Column(name = "nome")
+	private String nome;
+
+	@Column(name = "descricao")
+	private String descricao;
+
+	@ManyToMany(mappedBy = "aluno_habilidade")
+	private List<Aluno> alunos;
 }
