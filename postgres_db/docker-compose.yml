@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  portefeuille-postgres:
+    image: postgres:13.0
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 'portefeuille'
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./20-create-tables.sql:/docker-entrypoint-initdb.d/20-create-tables.sql
+      - ./30-seed-tables.sql:/docker-entrypoint-initdb.d/30-seed-tables.sql
