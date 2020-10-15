@@ -25,11 +25,11 @@ public class Projeto {
   @Column(name = "id_projeto")
   private int id;
 
-  @Column(name = "aluno")
-  private Long usuario;
+  @Column(name = "aluno_matricula")
+  private Long alunoMatricula;
 
-  @Column(name = "coordenador")
-  private Long coordenador;
+  @Column(name = "coordenador_matricula")
+  private Long coordenadorMatricula;
 
   @Column(name = "nome")
   private String nome;

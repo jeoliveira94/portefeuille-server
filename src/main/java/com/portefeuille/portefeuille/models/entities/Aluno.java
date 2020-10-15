@@ -1,5 +1,6 @@
 package com.portefeuille.portefeuille.models.entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,8 +27,8 @@ public class Aluno {
 	@Column(name = "matricula")
 	private Long matricula;
 
-	@Column(name = "idade")
-	private Integer idade;
+	@Column(name = "data_nascimento")
+	private Date dataNascimento;
 
 	@Column(name = "area")
 	private String area;
