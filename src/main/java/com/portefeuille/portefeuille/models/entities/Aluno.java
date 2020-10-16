@@ -1,14 +1,10 @@
 package com.portefeuille.portefeuille.models.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -27,13 +23,13 @@ public class Aluno {
 	@Column(name = "matricula")
 	private Long matricula;
 
+	@Column(name = "nome")
+	private String nome;
+
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 
 	@Column(name = "area")
 	private String area;
 
-	@ManyToMany
-	@JoinTable(name = "aluno_habilidade", joinColumns = @JoinColumn(name = "aluno_matricula"), inverseJoinColumns = @JoinColumn(name = "habilidade_id"))
-	private List<Habilidade> habilidades;
 }
