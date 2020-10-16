@@ -21,13 +21,16 @@ public class AlunoService {
 
   public Optional<Aluno> obterAluno(Long matricula) {
     Optional<Aluno> aluno;
-
     aluno = repository.findByMatricula(matricula);
 
-    if (aluno.isPresent()) {
-      return aluno.get();
-    }
-    return null;
+    return aluno;
+  }
+
+  public Optional<Aluno> obterAluno(String nome){
+    Optional<Aluno> aluno;
+    aluno = repository.findByNome(nome);
+
+    return aluno;
   }
 
 }
