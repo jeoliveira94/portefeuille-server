@@ -5,8 +5,8 @@ import java.util.List;
 import com.portefeuille.portefeuille.models.entities.Projeto;
 import com.portefeuille.portefeuille.models.repositories.ProjetoRepository;
 
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ProjetoService {
