@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import com.portefeuille.portefeuille.models.dto.AlunoDTO;
 import com.portefeuille.portefeuille.models.entities.Aluno;
 import com.portefeuille.portefeuille.services.AlunoService;
 
@@ -12,20 +13,24 @@ import org.aspectj.apache.bcel.classfile.Module.Require;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("api/v1")
+@CrossOrigin
+@RequestMapping("api/v1/alunos")
 public class AlunoController {
 
   @Autowired
   AlunoService service;
 
-  @GetMapping("/alunos")
+  @GetMapping
   public ResponseEntity getAllAlunos(@RequestParam(value = "nome", required = false) String nome,
       @RequestParam(value = "sobrenome", required = false) String sobrenome) {
     List<Aluno> alunos;
@@ -46,7 +51,7 @@ public class AlunoController {
     }
   }
 
-  @GetMapping("/alunos/{matricula}")
+  @GetMapping("/{matricula}")
   public ResponseEntity getAluno(@PathVariable Long matricula) {
     Optional<Aluno> aluno;
     try {
@@ -60,6 +65,20 @@ public class AlunoController {
       return ResponseEntity.badRequest().body(e.getMessage());
     }
 
+  }
+
+  @PostMapping
+  public ResponseEntity postAluno(@RequestBody AlunoDTO dto) {
+
+    try {
+      Aluno novoAluno = Aluno.builder().matricula(dto.getMatricula()).nome(dto.getNome())
+          .dataNascimento(dto.getDataNascimento()).area(dto.getArea()).build();
+
+      Aluno alunoSalvo = service.salvarAluno(novoAluno);
+      return new ResponseEntity<>(alunoSalvo, HttpStatus.OK);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
   }
 
 }
