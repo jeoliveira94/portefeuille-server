@@ -3,6 +3,8 @@ package com.portefeuille.portefeuille.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import com.portefeuille.portefeuille.models.entities.Aluno;
 import com.portefeuille.portefeuille.models.repositories.AlunoRepository;
 
@@ -26,11 +28,16 @@ public class AlunoService {
     return aluno;
   }
 
-  public Optional<Aluno> obterAluno(String nome){
+  public Optional<Aluno> obterAluno(String nome) {
     Optional<Aluno> aluno;
     aluno = repository.findByNome(nome);
 
     return aluno;
+  }
+
+  @Transactional
+  public Aluno salvarAluno(Aluno aluno) {
+    return repository.save(aluno);
   }
 
 }
