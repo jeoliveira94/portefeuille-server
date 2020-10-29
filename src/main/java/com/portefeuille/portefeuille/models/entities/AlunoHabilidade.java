@@ -1,6 +1,5 @@
 package com.portefeuille.portefeuille.models.entities;
 
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
