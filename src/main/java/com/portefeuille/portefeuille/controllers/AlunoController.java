@@ -22,7 +22,7 @@ public class AlunoController {
   AlunoService service;
 
   @GetMapping("/")
-  public ResponseEntity getAllAlunos() {
+  public ResponseEntity getAlunos() {
     List<Aluno> alunos;
 
     try {
