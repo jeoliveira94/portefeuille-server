@@ -13,6 +13,10 @@ public interface ProjetoRepository extends JpaRepository<Projeto, Long> {
 
 	List<Projeto> findAllByTipo(String tipo);
 
+	List<Projeto> findAll();
+
+	List<Projeto> findAllByAlunoMatricula(Long alunoMatricula);
+
 	// delete methods
 	void deleteByNome(String nome);
 
