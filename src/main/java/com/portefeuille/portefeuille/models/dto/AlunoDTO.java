@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AlunoDTO {
   private Long matricula;
+  private String senha;
   private String nome;
   private Date dataNascimento;
   private String area;
