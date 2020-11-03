@@ -1,5 +1,6 @@
 package com.portefeuille.portefeuille.services;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,11 +27,19 @@ public class AlunoService {
     return aluno;
   }
 
-  public Optional<Aluno> obterAluno(String nome){
+  public Optional<Aluno> obterAluno(String nome) {
     Optional<Aluno> aluno;
     aluno = repository.findByNome(nome);
 
     return aluno;
   }
 
+  public boolean autenticarAluno(Long matricula, String senha) {
+    Optional<Aluno> aluno;
+    aluno = repository.findByMatricula(matricula);
+    if (aluno.isPresent()) {
+      return aluno.get().getSenha().equals(senha);
+    }
+    return false;
+  }
 }
