@@ -23,6 +23,9 @@ public class Aluno {
 	@Column(name = "matricula")
 	private Long matricula;
 
+	@Column(name = "senha")
+	private String senha;
+
 	@Column(name = "nome")
 	private String nome;
 
