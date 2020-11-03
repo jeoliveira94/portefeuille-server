@@ -5,6 +5,7 @@ CREATE TABLE coordenador (
 
 CREATE TABLE aluno (
   matricula BIGINT PRIMARY KEY,
+  senha VARCHAR(12) NOT NULL,
   nome VARCHAR(100) NOT NULL,
   data_nascimento DATE NOT NULL,
   area VARCHAR(50)
