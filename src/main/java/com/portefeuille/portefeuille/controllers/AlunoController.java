@@ -21,7 +21,7 @@ public class AlunoController {
   @Autowired
   AlunoService service;
 
-  @GetMapping("/")
+  @GetMapping
   public ResponseEntity getAlunos() {
     List<Aluno> alunos;
 
