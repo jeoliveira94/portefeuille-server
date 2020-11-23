@@ -27,23 +27,25 @@ public class ProjetoController {
 
   SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
 
-  @PostMapping
-  public ResponseEntity postProjeto(@RequestBody ProjetoDTO dto) throws Exception {
-    Long alunoMatricula = Long.valueOf(dto.getAlunoMatricula());
-    Long coordenadorMatricula = Long.valueOf(dto.getCoordenadorMatricula());
-    Date data = formato.parse(dto.getData());
+  // @PostMapping
+  // public ResponseEntity postProjeto(@RequestBody ProjetoDTO dto) throws
+  // Exception {
+  // Long alunoMatricula = Long.valueOf(dto.getAlunoMatricula());
+  // Long coordenadorMatricula = Long.valueOf(dto.getCoordenadorMatricula());
+  // Date data = formato.parse(dto.getData());
 
-    try {
-      Projeto projeto = Projeto.builder().alunoMatricula(alunoMatricula).coordenadorMatricula(coordenadorMatricula)
-          .nome(dto.getNome()).tipo(dto.getTipo()).data(data).status(dto.getStatus()).descricao(dto.getDescricao())
-          .build();
+  // try {
+  // Projeto projeto =
+  // Projeto.builder().alunoMatricula(alunoMatricula).coordenadorMatricula(coordenadorMatricula)
+  // .nome(dto.getNome()).tipo(dto.getTipo()).data(data).status(dto.getStatus()).descricao(dto.getDescricao())
+  // .build();
 
-      Projeto projetoSalvo = service.salvarProjeto(projeto);
-      return new ResponseEntity<>(projetoSalvo, HttpStatus.CREATED);
-    } catch (Exception e) {
-      return ResponseEntity.badRequest().body(e.getMessage());
-    }
-  }
+  // Projeto projetoSalvo = service.salvarProjeto(projeto);
+  // return new ResponseEntity<>(projetoSalvo, HttpStatus.CREATED);
+  // } catch (Exception e) {
+  // return ResponseEntity.badRequest().body(e.getMessage());
+  // }
+  // }
 
   @GetMapping
   public ResponseEntity getProjetos() {

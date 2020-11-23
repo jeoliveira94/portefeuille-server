@@ -40,10 +40,8 @@ public class ProjetoControllerTest {
 
 	@Test
 	void deveSalvarProjeto() throws Exception {
-		ProjetoDTO dto = ProjetoDTO.builder().alunoMatricula("123").coordenadorMatricula("23").nome("wev").tipo("xyz")
+		ProjetoDTO dto = ProjetoDTO.builder().alunoMatricula("123").coordenadorMatricula("23").nome("wev").tipo("x")
 				.data("04/02/2001").status("t").descricao("abcd").build();
-
-		System.out.println(dto);
 
 		Projeto projeto = Projeto.builder().alunoMatricula(Long.valueOf(dto.getAlunoMatricula()))
 				.coordenadorMatricula(Long.valueOf(dto.getCoordenadorMatricula())).nome(dto.getNome())
