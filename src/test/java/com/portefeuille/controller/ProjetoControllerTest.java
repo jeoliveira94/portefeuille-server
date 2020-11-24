@@ -1,6 +1,7 @@
 package com.portefeuille.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.ws.rs.core.MediaType;
 
@@ -40,15 +41,14 @@ public class ProjetoControllerTest {
 
 	@Test
 	void deveSalvarProjeto() throws Exception {
-		ProjetoDTO dto = ProjetoDTO.builder().alunoMatricula("123").coordenadorMatricula("23").nome("wev").tipo("xyz")
-				.data("04/02/2001").status("t").descricao("abcd").build();
+		ProjetoDTO dto = ProjetoDTO.builder().alunoMatricula(123L).coordenadorMatricula(23L).nome("wev").tipo("xyz")
+				.data(new Date("04/02/2001")).status("t").descricao("abcd").build();
 
 		System.out.println(dto);
 
 		Projeto projeto = Projeto.builder().alunoMatricula(Long.valueOf(dto.getAlunoMatricula()))
-				.coordenadorMatricula(Long.valueOf(dto.getCoordenadorMatricula())).nome(dto.getNome())
-				.tipo(dto.getTipo()).data(formato.parse(dto.getData())).status(dto.getStatus())
-				.descricao(dto.getDescricao()).build();
+				.coordenadorMatricula(Long.valueOf(dto.getCoordenadorMatricula())).nome(dto.getNome()).tipo(dto.getTipo())
+				.data(dto.getData()).status(dto.getStatus()).descricao(dto.getDescricao()).build();
 
 		System.out.println(projeto);
 
