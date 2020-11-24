@@ -1,7 +1,6 @@
 package com.portefeuille.portefeuille.controllers;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import com.portefeuille.portefeuille.models.dto.ProjetoDTO;
@@ -29,14 +28,11 @@ public class ProjetoController {
 
   @PostMapping
   public ResponseEntity postProjeto(@RequestBody ProjetoDTO dto) throws Exception {
-    Long alunoMatricula = Long.valueOf(dto.getAlunoMatricula());
-    Long coordenadorMatricula = Long.valueOf(dto.getCoordenadorMatricula());
-    Date data = formato.parse(dto.getData());
 
     try {
-      Projeto projeto = Projeto.builder().alunoMatricula(alunoMatricula).coordenadorMatricula(coordenadorMatricula)
-          .nome(dto.getNome()).tipo(dto.getTipo()).data(data).status(dto.getStatus()).descricao(dto.getDescricao())
-          .build();
+      Projeto projeto = Projeto.builder().alunoMatricula(dto.getAlunoMatricula())
+          .coordenadorMatricula(dto.getCoordenadorMatricula()).nome(dto.getNome()).tipo(dto.getTipo())
+          .data(dto.getData()).status(dto.getStatus()).descricao(dto.getDescricao()).build();
 
       Projeto projetoSalvo = service.salvarProjeto(projeto);
       return new ResponseEntity<>(projetoSalvo, HttpStatus.CREATED);
