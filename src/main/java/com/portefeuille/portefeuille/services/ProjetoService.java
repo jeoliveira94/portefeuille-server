@@ -7,6 +7,7 @@ import com.portefeuille.portefeuille.models.repositories.ProjetoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProjetoService {
@@ -21,4 +22,10 @@ public class ProjetoService {
   public List<Projeto> obterProjetosDoAluno(Long alunoMatricula) {
     return repository.findAllByAlunoMatricula(alunoMatricula);
   }
+
+  @Transactional
+  public Projeto salvarProjeto(Projeto projeto) {
+    return repository.save(projeto);
+  }
+
 }
