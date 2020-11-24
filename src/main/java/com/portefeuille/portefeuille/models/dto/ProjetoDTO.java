@@ -1,5 +1,7 @@
 package com.portefeuille.portefeuille.models.dto;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjetoDTO {
-	private String alunoMatricula;
-	private String coordenadorMatricula;
+	private Long alunoMatricula;
+	private Long coordenadorMatricula;
 	private String nome;
 	private String tipo;
-	private String data;
+	private Date data;
 	private String status;
 	private String descricao;
 }
