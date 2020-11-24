@@ -1,6 +1,7 @@
 package com.portefeuille.controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.portefeuille.portefeuille.PortefeuilleApplication;
@@ -42,11 +43,11 @@ public class AlunoControllerTest {
 	public void deveSalvarUsuario() throws Exception {
 		// cenario
 		// dto para virar json
-		AlunoDTO dto = AlunoDTO.builder().matricula("123").nome("abc").dataNascimento("02/01/1999").area("qwerty")
+		AlunoDTO dto = AlunoDTO.builder().matricula(123L).nome("abc").dataNascimento(new Date("02/01/1999")).area("qwerty")
 				.build();
 		// resposta que será mock
-		Aluno aluno = Aluno.builder().matricula(Long.valueOf(123)).nome("abc")
-				.dataNascimento(formato.parse("02/01/1999")).area("qwerty").build();
+		Aluno aluno = Aluno.builder().matricula(Long.valueOf(123)).nome("abc").dataNascimento(formato.parse("02/01/1999"))
+				.area("qwerty").build();
 
 		// mock salvar
 		Mockito.when(service.salvarAluno(Mockito.any(Aluno.class))).thenReturn(aluno);
