@@ -1,6 +1,5 @@
 package com.portefeuille.portefeuille.services;
 
-import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +8,7 @@ import com.portefeuille.portefeuille.models.repositories.AlunoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AlunoService {
@@ -42,4 +42,10 @@ public class AlunoService {
     }
     return false;
   }
+
+  @Transactional
+  public Aluno salvarAluno(Aluno aluno) {
+    return repository.save(aluno);
+  }
+
 }
