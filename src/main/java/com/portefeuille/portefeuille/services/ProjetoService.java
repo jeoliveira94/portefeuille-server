@@ -15,6 +15,10 @@ public class ProjetoService {
   @Autowired
   ProjetoRepository repository;
 
+  public Projeto salvarProjeto(Projeto projeto) {
+    return repository.save(projeto);
+  }
+
   public List<Projeto> obterProjetos() {
     return repository.findAll();
   }

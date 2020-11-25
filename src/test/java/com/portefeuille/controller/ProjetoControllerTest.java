@@ -44,8 +44,6 @@ public class ProjetoControllerTest {
 		ProjetoDTO dto = ProjetoDTO.builder().alunoMatricula(123L).coordenadorMatricula(23L).nome("wev").tipo("xyz")
 				.data(new Date("04/02/2001")).status("t").descricao("abcd").build();
 
-		System.out.println(dto);
-
 		Projeto projeto = Projeto.builder().alunoMatricula(Long.valueOf(dto.getAlunoMatricula()))
 				.coordenadorMatricula(Long.valueOf(dto.getCoordenadorMatricula())).nome(dto.getNome()).tipo(dto.getTipo())
 				.data(dto.getData()).status(dto.getStatus()).descricao(dto.getDescricao()).build();
