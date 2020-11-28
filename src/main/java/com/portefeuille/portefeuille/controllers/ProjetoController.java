@@ -65,4 +65,16 @@ public class ProjetoController {
     }
   }
 
+  @GetMapping("/coordenador/{coordenadorMatricula}")
+  public ResponseEntity getProjetosByCoordenador(@PathVariable Long coordenadorMatricula) {
+    List<Projeto> projetos;
+
+    try {
+      projetos = service.obterProjetosDoCoordenador(coordenadorMatricula);
+      return new ResponseEntity<>(projetos, HttpStatus.OK);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
+  }
+
 }
