@@ -73,9 +73,8 @@ public class AlunoController {
   public ResponseEntity postAluno(@RequestBody AlunoDTO dto) {
 
     try {
-      Aluno novoAluno = Aluno.builder().matricula(dto.getMatricula()).nome(dto.getNome())
+      Aluno novoAluno = Aluno.builder().matricula(dto.getMatricula()).senha(dto.getSenha()).nome(dto.getNome())
           .dataNascimento(dto.getDataNascimento()).area(dto.getArea()).build();
-
       Aluno alunoSalvo = service.salvarAluno(novoAluno);
       return new ResponseEntity<>(alunoSalvo, HttpStatus.CREATED);
     } catch (Exception e) {
