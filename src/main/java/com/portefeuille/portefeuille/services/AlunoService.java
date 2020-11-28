@@ -48,4 +48,9 @@ public class AlunoService {
     return repository.save(aluno);
   }
 
+  @Transactional
+  public void removerAluno(Aluno aluno) {
+    repository.delete(aluno);
+  }
+
 }
