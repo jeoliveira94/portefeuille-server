@@ -49,19 +49,15 @@ public class AlunoController {
   SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
   @GetMapping
-  public ResponseEntity getAlunos(@RequestParam(value = "nome", required = false) String nome,
-      @RequestParam(value = "sobrenome", required = false) String sobrenome) {
+  public ResponseEntity getAlunos(@RequestParam(value = "nome", required = false) String nome) {
     List<Aluno> alunos;
 
-    System.out.println(nome + " " + sobrenome);
+    System.out.println(nome);
 
     try {
       alunos = service.obterAlunos();
       if (nome != null) {
         alunos = alunos.stream().filter(aluno -> aluno.getNome().contains(nome)).collect(Collectors.toList());
-      }
-      if (sobrenome != null) {
-        alunos = alunos.stream().filter(aluno -> aluno.getNome().contains(sobrenome)).collect(Collectors.toList());
       }
       return new ResponseEntity<>(alunos, HttpStatus.OK);
     } catch (Exception e) {
