@@ -37,7 +37,7 @@ public class ProjetoRepositoryTest {
 		Coordenador coordenador = Coordenador.builder().matricula(Long.valueOf(123)).nome("João").build();
 		Coordenador coordenadorSalvo = coordenadorRepository.save(coordenador);
 
-		Aluno aluno = Aluno.builder().matricula(Long.valueOf(1234)).nome("sim")
+		Aluno aluno = Aluno.builder().matricula(Long.valueOf(1234)).senha("123").nome("wev")
 				.dataNascimento(formato.parse("02/02/2020")).area("xyz").build();
 		Aluno alunoSalvo = alunoRepository.save(aluno);
 
