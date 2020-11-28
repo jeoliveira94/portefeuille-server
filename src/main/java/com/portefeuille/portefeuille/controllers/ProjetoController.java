@@ -34,12 +34,12 @@ public class ProjetoController {
           .coordenadorMatricula(dto.getCoordenadorMatricula()).nome(dto.getNome()).tipo(dto.getTipo())
           .data(dto.getData()).status(dto.getStatus()).descricao(dto.getDescricao()).build();
 
-  // Projeto projetoSalvo = service.salvarProjeto(projeto);
-  // return new ResponseEntity<>(projetoSalvo, HttpStatus.CREATED);
-  // } catch (Exception e) {
-  // return ResponseEntity.badRequest().body(e.getMessage());
-  // }
-  // }
+      Projeto projetoSalvo = service.salvarProjeto(projeto);
+      return new ResponseEntity<>(projetoSalvo, HttpStatus.CREATED);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
+  }
 
   @GetMapping
   public ResponseEntity getProjetos() {
