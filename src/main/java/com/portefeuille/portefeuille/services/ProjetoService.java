@@ -23,6 +23,10 @@ public class ProjetoService {
     return repository.findAllByAlunoMatricula(alunoMatricula);
   }
 
+  public List<Projeto> obterProjetosDoCoordenador(Long coordenadorMatricula) {
+    return repository.findAllByCoordenadorMatricula(coordenadorMatricula);
+  }
+
   @Transactional
   public Projeto salvarProjeto(Projeto projeto) {
     return repository.save(projeto);
