@@ -2,6 +2,7 @@ package com.portefeuille.portefeuille.controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Optional;
 
 import com.portefeuille.portefeuille.models.dto.ProjetoDTO;
 import com.portefeuille.portefeuille.models.entities.Projeto;
@@ -10,6 +11,7 @@ import com.portefeuille.portefeuille.services.ProjetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1/projetos/")
 public class ProjetoController {
 
@@ -36,6 +39,22 @@ public class ProjetoController {
 
       Projeto projetoSalvo = service.salvarProjeto(projeto);
       return new ResponseEntity<>(projetoSalvo, HttpStatus.CREATED);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity getProjetoById(@PathVariable Long id) {
+    try {
+      Optional<Projeto> projeto = service.obterProjetoPeloId(id);
+
+      if (projeto.isPresent()) {
+        return new ResponseEntity<>(projeto, HttpStatus.OK);
+      } else {
+        throw new Exception();
+      }
+
     } catch (Exception e) {
       return ResponseEntity.badRequest().body(e.getMessage());
     }

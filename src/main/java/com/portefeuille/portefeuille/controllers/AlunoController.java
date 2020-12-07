@@ -80,10 +80,8 @@ public class AlunoController {
 
   @PostMapping("/autenticar")
   public ResponseEntity authAluno(@RequestBody AlunoDTO dto) {
-    Aluno aluno = Aluno.builder().nome(dto.getNome()).senha(dto.getSenha()).area(dto.getArea())
-        .dataNascimento(dto.getDataNascimento()).matricula(dto.getMatricula()).build();
 
-    if (service.autenticarAluno(aluno.getMatricula(), aluno.getSenha())) {
+    if (service.autenticarAluno(dto.getMatricula(), dto.getSenha())) {
       return new ResponseEntity<>(true, HttpStatus.OK);
     }
     return new ResponseEntity<>(false, HttpStatus.OK);

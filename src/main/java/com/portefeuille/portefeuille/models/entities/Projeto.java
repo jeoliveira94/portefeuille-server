@@ -25,7 +25,7 @@ public class Projeto {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_projeto")
-  private int id;
+  private Long id;
 
   @Column(name = "aluno_matricula")
   private Long alunoMatricula;
